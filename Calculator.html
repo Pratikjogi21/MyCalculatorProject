@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightblue;
+        }
+        table{
+            width: 250px;
+            min-height: 250px;
+            border: 1px solid black;
+            padding: 5px;
+            background-color: lightslategray;
+            border-radius: 5px;
+        }
+        thead th{
+            width: 90px;
+            height: 75px;
+            padding: 5px;
+        }
+        thead section{
+            width: 100%;
+            height: 100%;
+            border: 1px solid black;
+            background-color: aliceblue;
+            border-radius: 10px;
+        }
+        section input{
+            width: 100%;
+            height: 100%;
+            padding: 5px;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+        tbody td{
+            width: 90px;
+            height: 60px;
+            padding: 5px;
+
+        }
+        button{
+            width: 100%;
+            height: 100%;
+            /* border-radius:10px; */
+            color: black;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: lightgray;
+        }
+        tbody input{
+            width: 100%;
+            height: 100%;
+            border-radius:10px;
+            color: black;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: lightgray;
+        }
+        .b1{
+            background-color: orange;
+        }
+        tbody input:hover{
+            scale: 1.05;
+        }
+        #ac{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr >
+                <th colspan="4" >
+                <section>
+                    <input type="text" id="main">
+                </section>
+            </th>
+               
+            </tr>
+           
+        </thead>
+        <tbody >
+            <tr>
+                <td ><input class="in" type="button"  value="+"></td>
+                <td><input class="in" type="button"  value="-"></td>
+                <td><input  class="in" type="button"  value="*"></td>
+                <td><input class="in" type="button" value="/"></td>
+            </tr>
+            <tr>
+                <td><input class="in" type="button" value="1"></td>
+                <td><input class="in" type="button" value="2"></td>
+                <td><input  class="in" type="button" value="3"></td>
+                <td><input   type="button" id="b1" value="C"></td>
+               
+            </tr>
+            <tr>
+                <td><input class="in" type="button" value="4"></td>
+                <td><input  class="in" type="button" value="5"></td>
+                <td><input class="in" type="button" value="6"></td>
+                <td rowspan="3"><input id="i1" type="button" class="b1" value="="></td>
+              
+                
+            </tr>
+            <tr>
+                <td><input class="in" type="button" value="7"></td>
+                <td><input class="in" type="button" value="8"></td>
+                <td><input class="in" type="button" value="9"></td>
+            
+            </tr>
+            <tr>
+                <td><input class="in" type="button" value="0"></td>
+                <td><input class="in" type="button" value="."></td>
+                <td><input type="button" id="ac" value="AC"></td>
+                
+                
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        let main = document.getElementById("main");
+        let inputs = document.querySelectorAll("input.in");
+        let ac = document.getElementById("ac");
+        let c = document.getElementById("b1");
+        let result = document.getElementById("i1")
+        console.log(inputs.length);
+
+        inputs.forEach(x =>{
+            console.log(x);
+
+            x.addEventListener("click",()=>{
+                main.value += x.value;
+            })
+        });
+
+        ac.addEventListener("click",()=>{
+            main.value = "";
+        });
+
+        c.addEventListener("click",()=>{
+            main.value =main.value.slice(0,main.value.length-1);
+        });
+
+        result.addEventListener("click",()=>{
+            main.value = eval(main.value);
+        })
+    </script>
+</body>
+</html>
